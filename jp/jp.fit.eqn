@@ -1,0 +1,1017 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--cnt[3] is cnt[3] at LCFF_X17_Y7_N15
+cnt[3] = DFFEAS(A1L102, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--cnt[2] is cnt[2] at LCFF_X17_Y7_N9
+cnt[2] = DFFEAS(A1L103, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--cnt[1] is cnt[1] at LCFF_X17_Y7_N31
+cnt[1] = DFFEAS(A1L104, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--cnt[0] is cnt[0] at LCFF_X17_Y7_N13
+cnt[0] = DFFEAS(A1L98, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L1 is Decoder~240 at LCCOMB_X18_Y7_N4
+A1L1 = !cnt[1] & !cnt[2] & !cnt[0] & !cnt[3];
+
+
+--A1L2 is Decoder~241 at LCCOMB_X18_Y7_N20
+A1L2 = !cnt[1] & !cnt[2] & cnt[0] & !cnt[3];
+
+
+--A1L3 is Decoder~242 at LCCOMB_X18_Y7_N26
+A1L3 = cnt[1] & !cnt[2] & !cnt[0] & !cnt[3];
+
+
+--A1L4 is Decoder~243 at LCCOMB_X18_Y7_N6
+A1L4 = cnt[1] & !cnt[2] & cnt[0] & !cnt[3];
+
+
+--A1L5 is Decoder~244 at LCCOMB_X18_Y7_N8
+A1L5 = !cnt[1] & cnt[2] & !cnt[0] & !cnt[3];
+
+
+--A1L6 is Decoder~245 at LCCOMB_X18_Y7_N30
+A1L6 = !cnt[1] & cnt[2] & cnt[0] & !cnt[3];
+
+
+--A1L102 is cnt[3]~129 at LCCOMB_X17_Y7_N14
+A1L102 = cnt[3] $ (cnt[0] & cnt[2] & cnt[1]);
+
+
+--A1L103 is cnt~130 at LCCOMB_X17_Y7_N8
+A1L103 = cnt[0] & (cnt[2] & cnt[3] & !cnt[1] # !cnt[2] & (cnt[1])) # !cnt[0] & (cnt[2]);
+
+
+--A1L104 is cnt~131 at LCCOMB_X17_Y7_N30
+A1L104 = cnt[0] & !cnt[1] & (cnt[3] # !cnt[2]) # !cnt[0] & (cnt[1]);
+
+
+--led6[0] is led6[0] at LCFF_X18_Y7_N3
+led6[0] = DFFEAS(A1L221, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L8 is Select~1418 at LCCOMB_X17_Y7_N0
+A1L8 = cnt[0] & (cnt[1] # cnt[2]);
+
+
+--led3[0] is led3[0] at LCFF_X18_Y7_N15
+led3[0] = DFFEAS(A1L184, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L7 is Decoder~246 at LCCOMB_X17_Y7_N10
+A1L7 = !cnt[1] & cnt[0];
+
+
+--led2[0] is led2[0] at LCFF_X18_Y7_N19
+led2[0] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led1[0],  ,  , VCC);
+
+
+--A1L9 is Select~1419 at LCCOMB_X18_Y7_N18
+A1L9 = A1L7 & (led2[0] & !A1L8) # !A1L7 & (led3[0] # A1L8);
+
+
+--led4[0] is led4[0] at LCFF_X18_Y7_N11
+led4[0] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led3[0],  ,  , VCC);
+
+
+--A1L10 is Select~1420 at LCCOMB_X18_Y7_N10
+A1L10 = A1L8 & (A1L9 & led4[0] # !A1L9 & (led6[0])) # !A1L8 & A1L9;
+
+
+--led5[0] is led5[0] at LCFF_X18_Y7_N13
+led5[0] = DFFEAS(A1L208, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[0] is led1[0] at LCFF_X18_Y7_N23
+led1[0] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, temp[0],  ,  , VCC);
+
+
+--A1L11 is Select~1421 at LCCOMB_X18_Y7_N22
+A1L11 = cnt[2] & (led5[0]) # !cnt[2] & led1[0];
+
+
+--A1L12 is Select~1422 at LCCOMB_X18_Y7_N28
+A1L12 = cnt[0] & A1L10 # !cnt[0] & (cnt[1] & A1L10 # !cnt[1] & (A1L11));
+
+
+--A1L228 is reduce_or~95 at LCCOMB_X18_Y7_N24
+A1L228 = cnt[3] # cnt[2] & cnt[1];
+
+
+--led3[1] is led3[1] at LCFF_X17_Y8_N17
+led3[1] = DFFEAS(A1L186, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led6[1] is led6[1] at LCFF_X18_Y8_N9
+led6[1] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led5[1],  ,  , VCC);
+
+
+--led2[1] is led2[1] at LCFF_X17_Y8_N27
+led2[1] = DFFEAS(A1L174, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L13 is Select~1423 at LCCOMB_X18_Y8_N8
+A1L13 = A1L7 & (A1L8 & (led6[1]) # !A1L8 & led2[1]) # !A1L7 & (A1L8);
+
+
+--led4[1] is led4[1] at LCFF_X18_Y8_N31
+led4[1] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led3[1],  ,  , VCC);
+
+
+--A1L14 is Select~1424 at LCCOMB_X18_Y8_N30
+A1L14 = A1L13 & (led4[1] # A1L7) # !A1L13 & led3[1] & (!A1L7);
+
+
+--led5[1] is led5[1] at LCFF_X17_Y8_N1
+led5[1] = DFFEAS(A1L210, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[1] is led1[1] at LCFF_X18_Y9_N21
+led1[1] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, temp[1],  ,  , VCC);
+
+
+--A1L15 is Select~1425 at LCCOMB_X18_Y9_N20
+A1L15 = cnt[2] & (led5[1]) # !cnt[2] & led1[1];
+
+
+--A1L16 is Select~1426 at LCCOMB_X17_Y8_N10
+A1L16 = cnt[0] & (A1L14) # !cnt[0] & (cnt[1] & (A1L14) # !cnt[1] & A1L15);
+
+
+--led6[2] is led6[2] at LCFF_X18_Y7_N1
+led6[2] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led5[2],  ,  , VCC);
+
+
+--led3[2] is led3[2] at LCFF_X17_Y8_N13
+led3[2] = DFFEAS(A1L188, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[2] is led2[2] at LCFF_X18_Y8_N13
+led2[2] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led1[2],  ,  , VCC);
+
+
+--A1L17 is Select~1427 at LCCOMB_X18_Y8_N12
+A1L17 = A1L7 & (led2[2] & !A1L8) # !A1L7 & (led3[2] # A1L8);
+
+
+--led4[2] is led4[2] at LCFF_X18_Y8_N7
+led4[2] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led3[2],  ,  , VCC);
+
+
+--A1L18 is Select~1428 at LCCOMB_X18_Y8_N6
+A1L18 = A1L17 & (led4[2] # !A1L8) # !A1L17 & A1L8 & (led6[2]);
+
+
+--led5[2] is led5[2] at LCFF_X18_Y8_N3
+led5[2] = DFFEAS(A1L212, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[2] is led1[2] at LCFF_X18_Y8_N27
+led1[2] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, temp[2],  ,  , VCC);
+
+
+--A1L19 is Select~1429 at LCCOMB_X18_Y8_N26
+A1L19 = cnt[2] & led5[2] # !cnt[2] & (led1[2]);
+
+
+--A1L20 is Select~1430 at LCCOMB_X17_Y8_N8
+A1L20 = cnt[0] & (A1L18) # !cnt[0] & (cnt[1] & (A1L18) # !cnt[1] & A1L19);
+
+
+--led3[3] is led3[3] at LCFF_X17_Y8_N31
+led3[3] = DFFEAS(A1L190, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led6[3] is led6[3] at LCFF_X18_Y8_N5
+led6[3] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led5[3],  ,  , VCC);
+
+
+--led2[3] is led2[3] at LCFF_X17_Y8_N23
+led2[3] = DFFEAS(A1L177, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L21 is Select~1431 at LCCOMB_X18_Y8_N4
+A1L21 = A1L7 & (A1L8 & led6[3] # !A1L8 & (led2[3])) # !A1L7 & A1L8;
+
+
+--led4[3] is led4[3] at LCFF_X18_Y8_N23
+led4[3] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led3[3],  ,  , VCC);
+
+
+--A1L22 is Select~1432 at LCCOMB_X18_Y8_N22
+A1L22 = A1L21 & (led4[3] # A1L7) # !A1L21 & led3[3] & (!A1L7);
+
+
+--led5[3] is led5[3] at LCFF_X18_Y8_N25
+led5[3] = DFFEAS(A1L214, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[3] is led1[3] at LCFF_X18_Y8_N17
+led1[3] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, temp[3],  ,  , VCC);
+
+
+--A1L23 is Select~1433 at LCCOMB_X18_Y8_N16
+A1L23 = cnt[2] & led5[3] # !cnt[2] & (led1[3]);
+
+
+--A1L24 is Select~1434 at LCCOMB_X17_Y8_N28
+A1L24 = cnt[0] & (A1L22) # !cnt[0] & (cnt[1] & (A1L22) # !cnt[1] & A1L23);
+
+
+--led6[4] is led6[4] at LCFF_X19_Y8_N27
+led6[4] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led5[4],  ,  , VCC);
+
+
+--led3[4] is led3[4] at LCFF_X17_Y8_N15
+led3[4] = DFFEAS(A1L192, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[4] is led2[4] at LCFF_X18_Y8_N11
+led2[4] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led1[4],  ,  , VCC);
+
+
+--A1L25 is Select~1435 at LCCOMB_X18_Y8_N10
+A1L25 = A1L7 & !A1L8 & led2[4] # !A1L7 & (A1L8 # led3[4]);
+
+
+--led4[4] is led4[4] at LCFF_X18_Y8_N29
+led4[4] = DFFEAS(A1L203, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L26 is Select~1436 at LCCOMB_X19_Y8_N26
+A1L26 = A1L25 & (led4[4] # !A1L8) # !A1L25 & A1L8 & led6[4];
+
+
+--led5[4] is led5[4] at LCFF_X18_Y8_N21
+led5[4] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led4[4],  ,  , VCC);
+
+
+--led1[4] is led1[4] at LCFF_X18_Y8_N15
+led1[4] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, temp[4],  ,  , VCC);
+
+
+--A1L27 is Select~1437 at LCCOMB_X18_Y8_N14
+A1L27 = cnt[2] & (led5[4]) # !cnt[2] & led1[4];
+
+
+--A1L28 is Select~1438 at LCCOMB_X19_Y8_N0
+A1L28 = cnt[0] & A1L26 # !cnt[0] & (cnt[1] & A1L26 # !cnt[1] & (A1L27));
+
+
+--led3[5] is led3[5] at LCFF_X18_Y9_N31
+led3[5] = DFFEAS(A1L194, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led6[5] is led6[5] at LCFF_X19_Y8_N7
+led6[5] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led5[5],  ,  , VCC);
+
+
+--led2[5] is led2[5] at LCFF_X18_Y9_N13
+led2[5] = DFFEAS(A1L180, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L29 is Select~1439 at LCCOMB_X19_Y8_N6
+A1L29 = A1L7 & (A1L8 & (led6[5]) # !A1L8 & led2[5]) # !A1L7 & (A1L8);
+
+
+--led4[5] is led4[5] at LCFF_X19_Y8_N31
+led4[5] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led3[5],  ,  , VCC);
+
+
+--A1L30 is Select~1440 at LCCOMB_X19_Y8_N30
+A1L30 = A1L7 & (A1L29) # !A1L7 & (A1L29 & (led4[5]) # !A1L29 & led3[5]);
+
+
+--led5[5] is led5[5] at LCFF_X18_Y9_N9
+led5[5] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led4[5],  ,  , VCC);
+
+
+--led1[5] is led1[5] at LCFF_X18_Y9_N23
+led1[5] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, temp[5],  ,  , VCC);
+
+
+--A1L31 is Select~1441 at LCCOMB_X18_Y9_N22
+A1L31 = cnt[2] & (led5[5]) # !cnt[2] & led1[5];
+
+
+--A1L32 is Select~1442 at LCCOMB_X19_Y8_N28
+A1L32 = cnt[0] & (A1L30) # !cnt[0] & (cnt[1] & (A1L30) # !cnt[1] & A1L31);
+
+
+--led6[6] is led6[6] at LCFF_X19_Y8_N3
+led6[6] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led5[6],  ,  , VCC);
+
+
+--led3[6] is led3[6] at LCFF_X17_Y8_N7
+led3[6] = DFFEAS(A1L196, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[6] is led2[6] at LCFF_X18_Y8_N19
+led2[6] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led1[6],  ,  , VCC);
+
+
+--A1L33 is Select~1443 at LCCOMB_X18_Y8_N18
+A1L33 = A1L7 & (led2[6] & !A1L8) # !A1L7 & (led3[6] # A1L8);
+
+
+--led4[6] is led4[6] at LCFF_X18_Y8_N1
+led4[6] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, led3[6],  ,  , VCC);
+
+
+--A1L34 is Select~1444 at LCCOMB_X18_Y8_N0
+A1L34 = A1L8 & (A1L33 & (led4[6]) # !A1L33 & led6[6]) # !A1L8 & (A1L33);
+
+
+--led5[6] is led5[6] at LCFF_X18_Y9_N19
+led5[6] = DFFEAS(A1L218, GLOBAL(A1L94),  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[6] is led1[6] at LCFF_X18_Y9_N5
+led1[6] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(A1L94),  ,  , !flag, temp[6],  ,  , VCC);
+
+
+--A1L35 is Select~1445 at LCCOMB_X18_Y9_N4
+A1L35 = cnt[2] & (led5[6]) # !cnt[2] & led1[6];
+
+
+--A1L36 is Select~1446 at LCCOMB_X17_Y8_N2
+A1L36 = cnt[0] & A1L34 # !cnt[0] & (cnt[1] & A1L34 # !cnt[1] & (A1L35));
+
+
+--clk1 is clk1 at LCFF_X17_Y7_N25
+clk1 = DFFEAS(A1L93, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--flag is flag at LCFF_X17_Y8_N19
+flag = DFFEAS(A1L162, GLOBAL(A1L94),  ,  ,  , VCC,  ,  , !flag);
+
+
+--temp[0] is temp[0] at LCFF_X19_Y8_N17
+temp[0] = DFFEAS(A1L230, GLOBAL(A1L94),  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[1] is temp[1] at LCFF_X19_Y8_N13
+temp[1] = DFFEAS(A1L231, GLOBAL(A1L94),  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[2] is temp[2] at LCFF_X19_Y8_N5
+temp[2] = DFFEAS(A1L232, GLOBAL(A1L94),  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[3] is temp[3] at LCFF_X19_Y8_N23
+temp[3] = DFFEAS(A1L233, GLOBAL(A1L94),  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[4] is temp[4] at LCFF_X19_Y8_N15
+temp[4] = DFFEAS(A1L234, GLOBAL(A1L94),  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[5] is temp[5] at LCFF_X19_Y8_N19
+temp[5] = DFFEAS(A1L235, GLOBAL(A1L94),  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[6] is temp[6] at LCFF_X19_Y8_N25
+temp[6] = DFFEAS(A1L236, GLOBAL(A1L94),  ,  , A1L91,  ,  ,  ,  );
+
+
+--count[25] is count[25] at LCFF_X15_Y6_N25
+count[25] = DFFEAS(A1L87, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[24] is count[24] at LCFF_X15_Y6_N23
+count[24] = DFFEAS(A1L85, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[23] is count[23] at LCFF_X15_Y6_N21
+count[23] = DFFEAS(A1L83, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[22] is count[22] at LCFF_X15_Y6_N19
+count[22] = DFFEAS(A1L81, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L237 is rtl~249 at LCCOMB_X15_Y6_N30
+A1L237 = !count[23] & !count[24] & !count[25] & !count[22];
+
+
+--count[21] is count[21] at LCFF_X15_Y6_N17
+count[21] = DFFEAS(A1L79, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[20] is count[20] at LCFF_X15_Y6_N15
+count[20] = DFFEAS(A1L77, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[19] is count[19] at LCFF_X15_Y6_N13
+count[19] = DFFEAS(A1L75, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[18] is count[18] at LCFF_X15_Y6_N11
+count[18] = DFFEAS(A1L73, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L238 is rtl~250 at LCCOMB_X17_Y6_N6
+A1L238 = !count[18] & !count[19] & !count[20] & !count[21];
+
+
+--count[17] is count[17] at LCFF_X15_Y6_N9
+count[17] = DFFEAS(A1L71, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[16] is count[16] at LCFF_X15_Y6_N7
+count[16] = DFFEAS(A1L69, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[15] is count[15] at LCFF_X15_Y6_N5
+count[15] = DFFEAS(A1L67, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[14] is count[14] at LCFF_X15_Y6_N3
+count[14] = DFFEAS(A1L65, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L239 is rtl~251 at LCCOMB_X15_Y6_N26
+A1L239 = !count[16] & !count[15] & !count[17] & !count[14];
+
+
+--count[13] is count[13] at LCFF_X17_Y7_N29
+count[13] = DFFEAS(A1L132, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[12] is count[12] at LCFF_X17_Y7_N7
+count[12] = DFFEAS(A1L133, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[11] is count[11] at LCFF_X17_Y7_N27
+count[11] = DFFEAS(A1L134, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[10] is count[10] at LCFF_X15_Y7_N27
+count[10] = DFFEAS(A1L57, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L240 is rtl~252 at LCCOMB_X17_Y7_N22
+A1L240 = count[11] & !count[10] & count[13] & count[12];
+
+
+--A1L241 is rtl~253 at LCCOMB_X15_Y6_N28
+A1L241 = A1L238 & A1L237 & A1L240 & A1L239;
+
+
+--count[9] is count[9] at LCFF_X17_Y7_N5
+count[9] = DFFEAS(A1L135, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[7] is count[7] at LCFF_X17_Y7_N3
+count[7] = DFFEAS(A1L136, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[8] is count[8] at LCFF_X15_Y7_N23
+count[8] = DFFEAS(A1L53, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[6] is count[6] at LCFF_X15_Y7_N19
+count[6] = DFFEAS(A1L49, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L242 is rtl~254 at LCCOMB_X17_Y7_N18
+A1L242 = !count[8] & !count[6] & count[9] & count[7];
+
+
+--count[4] is count[4] at LCFF_X17_Y7_N17
+count[4] = DFFEAS(A1L137, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[3] is count[3] at LCFF_X15_Y7_N5
+count[3] = DFFEAS(A1L138, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[5] is count[5] at LCFF_X15_Y7_N17
+count[5] = DFFEAS(A1L47, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[2] is count[2] at LCFF_X15_Y7_N11
+count[2] = DFFEAS(A1L41, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L243 is rtl~255 at LCCOMB_X17_Y7_N20
+A1L243 = !count[2] & !count[5] & count[4] & count[3];
+
+
+--count[1] is count[1] at LCFF_X15_Y7_N9
+count[1] = DFFEAS(A1L39, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[0] is count[0] at LCFF_X15_Y7_N1
+count[0] = DFFEAS(A1L139, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L244 is rtl~256 at LCCOMB_X15_Y7_N2
+A1L244 = A1L243 & A1L242 & !count[1] & !count[0];
+
+
+--A1L93 is clk1~5 at LCCOMB_X17_Y7_N24
+A1L93 = clk1 $ (A1L244 & A1L241);
+
+
+--A1L245 is rtl~257 at LCCOMB_X20_Y8_N24
+A1L245 = din[0] & din[3] & din[2] & din[1];
+
+
+--A1L89 is always1~77 at LCCOMB_X18_Y7_N0
+A1L89 = !led6[3] & !led6[1] & !led6[2] & !led6[0];
+
+
+--A1L90 is always1~78 at LCCOMB_X19_Y8_N2
+A1L90 = !led6[5] & A1L89 & !led6[6] & !led6[4];
+
+
+--A1L162 is flag~59 at LCCOMB_X17_Y8_N18
+A1L162 = A1L245 # flag & !A1L90;
+
+
+--A1L230 is reduce_or~96 at LCCOMB_X19_Y8_N16
+A1L230 = din[2] & (din[1] & !din[0] & !din[3] # !din[1] & (din[3])) # !din[2] & din[3] & (din[0] # din[1]);
+
+
+--A1L91 is always1~79 at LCCOMB_X19_Y8_N10
+A1L91 = !A1L245 & A1L90;
+
+
+--A1L231 is reduce_or~97 at LCCOMB_X19_Y8_N12
+A1L231 = din[0] & (din[3] $ (din[2] & din[1])) # !din[0] & din[2] & din[1];
+
+
+--A1L232 is reduce_or~98 at LCCOMB_X19_Y8_N4
+A1L232 = din[2] & (din[3] & !din[0] # !din[3] & (din[1])) # !din[2] & din[3] & (din[0] # din[1]);
+
+
+--A1L233 is reduce_or~99 at LCCOMB_X19_Y8_N22
+A1L233 = din[3] & (din[2] & (!din[1]) # !din[2] & (din[0] # din[1]));
+
+
+--A1L234 is reduce_or~100 at LCCOMB_X19_Y8_N14
+A1L234 = din[3] & (din[0] & (!din[1]) # !din[0] & !din[2] & din[1]);
+
+
+--A1L235 is reduce_or~101 at LCCOMB_X19_Y8_N18
+A1L235 = din[0] & (din[2] & din[1] & !din[3] # !din[2] & !din[1] & din[3]) # !din[0] & din[3] & (din[2] $ din[1]);
+
+
+--A1L236 is reduce_or~102 at LCCOMB_X19_Y8_N24
+A1L236 = din[0] & (din[3] $ (din[2] & din[1])) # !din[0] & din[3] & (din[2] $ din[1]);
+
+
+--A1L37 is add~485 at LCCOMB_X15_Y7_N6
+A1L37 = count[0] $ VCC;
+
+--A1L38 is add~486 at LCCOMB_X15_Y7_N6
+A1L38 = CARRY(count[0]);
+
+
+--A1L39 is add~487 at LCCOMB_X15_Y7_N8
+A1L39 = count[1] & !A1L38 # !count[1] & (A1L38 # GND);
+
+--A1L40 is add~488 at LCCOMB_X15_Y7_N8
+A1L40 = CARRY(!A1L38 # !count[1]);
+
+
+--A1L41 is add~489 at LCCOMB_X15_Y7_N10
+A1L41 = count[2] & (A1L40 $ GND) # !count[2] & !A1L40 & VCC;
+
+--A1L42 is add~490 at LCCOMB_X15_Y7_N10
+A1L42 = CARRY(count[2] & !A1L40);
+
+
+--A1L43 is add~491 at LCCOMB_X15_Y7_N12
+A1L43 = count[3] & !A1L42 # !count[3] & (A1L42 # GND);
+
+--A1L44 is add~492 at LCCOMB_X15_Y7_N12
+A1L44 = CARRY(!A1L42 # !count[3]);
+
+
+--A1L45 is add~493 at LCCOMB_X15_Y7_N14
+A1L45 = count[4] & (A1L44 $ GND) # !count[4] & !A1L44 & VCC;
+
+--A1L46 is add~494 at LCCOMB_X15_Y7_N14
+A1L46 = CARRY(count[4] & !A1L44);
+
+
+--A1L47 is add~495 at LCCOMB_X15_Y7_N16
+A1L47 = count[5] & !A1L46 # !count[5] & (A1L46 # GND);
+
+--A1L48 is add~496 at LCCOMB_X15_Y7_N16
+A1L48 = CARRY(!A1L46 # !count[5]);
+
+
+--A1L49 is add~497 at LCCOMB_X15_Y7_N18
+A1L49 = count[6] & (A1L48 $ GND) # !count[6] & !A1L48 & VCC;
+
+--A1L50 is add~498 at LCCOMB_X15_Y7_N18
+A1L50 = CARRY(count[6] & !A1L48);
+
+
+--A1L51 is add~499 at LCCOMB_X15_Y7_N20
+A1L51 = count[7] & !A1L50 # !count[7] & (A1L50 # GND);
+
+--A1L52 is add~500 at LCCOMB_X15_Y7_N20
+A1L52 = CARRY(!A1L50 # !count[7]);
+
+
+--A1L53 is add~501 at LCCOMB_X15_Y7_N22
+A1L53 = count[8] & (A1L52 $ GND) # !count[8] & !A1L52 & VCC;
+
+--A1L54 is add~502 at LCCOMB_X15_Y7_N22
+A1L54 = CARRY(count[8] & !A1L52);
+
+
+--A1L55 is add~503 at LCCOMB_X15_Y7_N24
+A1L55 = count[9] & !A1L54 # !count[9] & (A1L54 # GND);
+
+--A1L56 is add~504 at LCCOMB_X15_Y7_N24
+A1L56 = CARRY(!A1L54 # !count[9]);
+
+
+--A1L57 is add~505 at LCCOMB_X15_Y7_N26
+A1L57 = count[10] & (A1L56 $ GND) # !count[10] & !A1L56 & VCC;
+
+--A1L58 is add~506 at LCCOMB_X15_Y7_N26
+A1L58 = CARRY(count[10] & !A1L56);
+
+
+--A1L59 is add~507 at LCCOMB_X15_Y7_N28
+A1L59 = count[11] & !A1L58 # !count[11] & (A1L58 # GND);
+
+--A1L60 is add~508 at LCCOMB_X15_Y7_N28
+A1L60 = CARRY(!A1L58 # !count[11]);
+
+
+--A1L61 is add~509 at LCCOMB_X15_Y7_N30
+A1L61 = count[12] & (A1L60 $ GND) # !count[12] & !A1L60 & VCC;
+
+--A1L62 is add~510 at LCCOMB_X15_Y7_N30
+A1L62 = CARRY(count[12] & !A1L60);
+
+
+--A1L63 is add~511 at LCCOMB_X15_Y6_N0
+A1L63 = count[13] & !A1L62 # !count[13] & (A1L62 # GND);
+
+--A1L64 is add~512 at LCCOMB_X15_Y6_N0
+A1L64 = CARRY(!A1L62 # !count[13]);
+
+
+--A1L65 is add~513 at LCCOMB_X15_Y6_N2
+A1L65 = count[14] & (A1L64 $ GND) # !count[14] & !A1L64 & VCC;
+
+--A1L66 is add~514 at LCCOMB_X15_Y6_N2
+A1L66 = CARRY(count[14] & !A1L64);
+
+
+--A1L67 is add~515 at LCCOMB_X15_Y6_N4
+A1L67 = count[15] & !A1L66 # !count[15] & (A1L66 # GND);
+
+--A1L68 is add~516 at LCCOMB_X15_Y6_N4
+A1L68 = CARRY(!A1L66 # !count[15]);
+
+
+--A1L69 is add~517 at LCCOMB_X15_Y6_N6
+A1L69 = count[16] & (A1L68 $ GND) # !count[16] & !A1L68 & VCC;
+
+--A1L70 is add~518 at LCCOMB_X15_Y6_N6
+A1L70 = CARRY(count[16] & !A1L68);
+
+
+--A1L71 is add~519 at LCCOMB_X15_Y6_N8
+A1L71 = count[17] & !A1L70 # !count[17] & (A1L70 # GND);
+
+--A1L72 is add~520 at LCCOMB_X15_Y6_N8
+A1L72 = CARRY(!A1L70 # !count[17]);
+
+
+--A1L73 is add~521 at LCCOMB_X15_Y6_N10
+A1L73 = count[18] & (A1L72 $ GND) # !count[18] & !A1L72 & VCC;
+
+--A1L74 is add~522 at LCCOMB_X15_Y6_N10
+A1L74 = CARRY(count[18] & !A1L72);
+
+
+--A1L75 is add~523 at LCCOMB_X15_Y6_N12
+A1L75 = count[19] & !A1L74 # !count[19] & (A1L74 # GND);
+
+--A1L76 is add~524 at LCCOMB_X15_Y6_N12
+A1L76 = CARRY(!A1L74 # !count[19]);
+
+
+--A1L77 is add~525 at LCCOMB_X15_Y6_N14
+A1L77 = count[20] & (A1L76 $ GND) # !count[20] & !A1L76 & VCC;
+
+--A1L78 is add~526 at LCCOMB_X15_Y6_N14
+A1L78 = CARRY(count[20] & !A1L76);
+
+
+--A1L79 is add~527 at LCCOMB_X15_Y6_N16
+A1L79 = count[21] & !A1L78 # !count[21] & (A1L78 # GND);
+
+--A1L80 is add~528 at LCCOMB_X15_Y6_N16
+A1L80 = CARRY(!A1L78 # !count[21]);
+
+
+--A1L81 is add~529 at LCCOMB_X15_Y6_N18
+A1L81 = count[22] & (A1L80 $ GND) # !count[22] & !A1L80 & VCC;
+
+--A1L82 is add~530 at LCCOMB_X15_Y6_N18
+A1L82 = CARRY(count[22] & !A1L80);
+
+
+--A1L83 is add~531 at LCCOMB_X15_Y6_N20
+A1L83 = count[23] & !A1L82 # !count[23] & (A1L82 # GND);
+
+--A1L84 is add~532 at LCCOMB_X15_Y6_N20
+A1L84 = CARRY(!A1L82 # !count[23]);
+
+
+--A1L85 is add~533 at LCCOMB_X15_Y6_N22
+A1L85 = count[24] & (A1L84 $ GND) # !count[24] & !A1L84 & VCC;
+
+--A1L86 is add~534 at LCCOMB_X15_Y6_N22
+A1L86 = CARRY(count[24] & !A1L84);
+
+
+--A1L87 is add~535 at LCCOMB_X15_Y6_N24
+A1L87 = count[25] $ A1L86;
+
+
+--A1L132 is count~196 at LCCOMB_X17_Y7_N28
+A1L132 = A1L63 & (!A1L241 # !A1L244);
+
+
+--A1L133 is count~197 at LCCOMB_X17_Y7_N6
+A1L133 = A1L61 & (!A1L241 # !A1L244);
+
+
+--A1L134 is count~198 at LCCOMB_X17_Y7_N26
+A1L134 = A1L59 & (!A1L241 # !A1L244);
+
+
+--A1L135 is count~199 at LCCOMB_X17_Y7_N4
+A1L135 = A1L55 & (!A1L241 # !A1L244);
+
+
+--A1L136 is count~200 at LCCOMB_X17_Y7_N2
+A1L136 = A1L51 & (!A1L241 # !A1L244);
+
+
+--A1L137 is count~201 at LCCOMB_X17_Y7_N16
+A1L137 = A1L45 & (!A1L244 # !A1L241);
+
+
+--A1L138 is count~202 at LCCOMB_X15_Y7_N4
+A1L138 = A1L43 & (!A1L241 # !A1L244);
+
+
+--A1L139 is count~203 at LCCOMB_X15_Y7_N0
+A1L139 = A1L37 & (!A1L241 # !A1L244);
+
+
+--A1L98 is cnt[0]~132 at LCCOMB_X17_Y7_N12
+A1L98 = !cnt[0];
+
+
+--dout[0]$latch is dout[0]$latch at LCCOMB_X18_Y7_N16
+dout[0]$latch = GLOBAL(A1L229) & (dout[0]$latch) # !GLOBAL(A1L229) & A1L12;
+
+
+--dout[1]$latch is dout[1]$latch at LCCOMB_X17_Y8_N4
+dout[1]$latch = GLOBAL(A1L229) & (dout[1]$latch) # !GLOBAL(A1L229) & A1L16;
+
+
+--dout[2]$latch is dout[2]$latch at LCCOMB_X13_Y5_N20
+dout[2]$latch = GLOBAL(A1L229) & (dout[2]$latch) # !GLOBAL(A1L229) & A1L20;
+
+
+--dout[3]$latch is dout[3]$latch at LCCOMB_X17_Y8_N24
+dout[3]$latch = GLOBAL(A1L229) & (dout[3]$latch) # !GLOBAL(A1L229) & A1L24;
+
+
+--dout[4]$latch is dout[4]$latch at LCCOMB_X19_Y8_N20
+dout[4]$latch = GLOBAL(A1L229) & (dout[4]$latch) # !GLOBAL(A1L229) & A1L28;
+
+
+--dout[5]$latch is dout[5]$latch at LCCOMB_X19_Y8_N8
+dout[5]$latch = GLOBAL(A1L229) & (dout[5]$latch) # !GLOBAL(A1L229) & A1L32;
+
+
+--dout[6]$latch is dout[6]$latch at LCCOMB_X17_Y8_N20
+dout[6]$latch = GLOBAL(A1L229) & (dout[6]$latch) # !GLOBAL(A1L229) & A1L36;
+
+
+--clk100khz is clk100khz at PIN_25
+--operation mode is input
+
+clk100khz = INPUT();
+
+
+--din[3] is din[3] at PIN_99
+--operation mode is input
+
+din[3] = INPUT();
+
+
+--din[1] is din[1] at PIN_101
+--operation mode is input
+
+din[1] = INPUT();
+
+
+--din[2] is din[2] at PIN_100
+--operation mode is input
+
+din[2] = INPUT();
+
+
+--din[0] is din[0] at PIN_103
+--operation mode is input
+
+din[0] = INPUT();
+
+
+--scan[0] is scan[0] at PIN_51
+--operation mode is output
+
+scan[0] = OUTPUT(A1L1);
+
+
+--scan[1] is scan[1] at PIN_52
+--operation mode is output
+
+scan[1] = OUTPUT(A1L2);
+
+
+--scan[2] is scan[2] at PIN_53
+--operation mode is output
+
+scan[2] = OUTPUT(A1L3);
+
+
+--scan[3] is scan[3] at PIN_55
+--operation mode is output
+
+scan[3] = OUTPUT(A1L4);
+
+
+--scan[4] is scan[4] at PIN_57
+--operation mode is output
+
+scan[4] = OUTPUT(A1L5);
+
+
+--scan[5] is scan[5] at PIN_58
+--operation mode is output
+
+scan[5] = OUTPUT(A1L6);
+
+
+--dout[0] is dout[0] at PIN_40
+--operation mode is output
+
+dout[0] = OUTPUT(dout[0]$latch);
+
+
+--dout[1] is dout[1] at PIN_41
+--operation mode is output
+
+dout[1] = OUTPUT(dout[1]$latch);
+
+
+--dout[2] is dout[2] at PIN_42
+--operation mode is output
+
+dout[2] = OUTPUT(dout[2]$latch);
+
+
+--dout[3] is dout[3] at PIN_43
+--operation mode is output
+
+dout[3] = OUTPUT(dout[3]$latch);
+
+
+--dout[4] is dout[4] at PIN_44
+--operation mode is output
+
+dout[4] = OUTPUT(dout[4]$latch);
+
+
+--dout[5] is dout[5] at PIN_45
+--operation mode is output
+
+dout[5] = OUTPUT(dout[5]$latch);
+
+
+--dout[6] is dout[6] at PIN_47
+--operation mode is output
+
+dout[6] = OUTPUT(dout[6]$latch);
+
+
+--dout[7] is dout[7] at PIN_48
+--operation mode is output
+
+dout[7] = OUTPUT(GND);
+
+
+
+
+
+--A1L229 is reduce_or~95clkctrl at CLKCTRL_G5
+A1L229 = cycloneii_clkctrl(.INCLK[0] = A1L228) WITH (clock_type = "Global Clock");
+
+
+--A1L94 is clk1~clkctrl at CLKCTRL_G2
+A1L94 = cycloneii_clkctrl(.INCLK[0] = clk1) WITH (clock_type = "Global Clock");
+
+
+--A1L184 is led3[0]~feeder at LCCOMB_X18_Y7_N14
+A1L184 = led2[0];
+
+
+--A1L208 is led5[0]~feeder at LCCOMB_X18_Y7_N12
+A1L208 = led4[0];
+
+
+--A1L221 is led6[0]~feeder at LCCOMB_X18_Y7_N2
+A1L221 = led5[0];
+
+
+--A1L186 is led3[1]~feeder at LCCOMB_X17_Y8_N16
+A1L186 = led2[1];
+
+
+--A1L210 is led5[1]~feeder at LCCOMB_X17_Y8_N0
+A1L210 = led4[1];
+
+
+--A1L174 is led2[1]~feeder at LCCOMB_X17_Y8_N26
+A1L174 = led1[1];
+
+
+--A1L188 is led3[2]~feeder at LCCOMB_X17_Y8_N12
+A1L188 = led2[2];
+
+
+--A1L212 is led5[2]~feeder at LCCOMB_X18_Y8_N2
+A1L212 = led4[2];
+
+
+--A1L190 is led3[3]~feeder at LCCOMB_X17_Y8_N30
+A1L190 = led2[3];
+
+
+--A1L214 is led5[3]~feeder at LCCOMB_X18_Y8_N24
+A1L214 = led4[3];
+
+
+--A1L177 is led2[3]~feeder at LCCOMB_X17_Y8_N22
+A1L177 = led1[3];
+
+
+--A1L203 is led4[4]~feeder at LCCOMB_X18_Y8_N28
+A1L203 = led3[4];
+
+
+--A1L192 is led3[4]~feeder at LCCOMB_X17_Y8_N14
+A1L192 = led2[4];
+
+
+--A1L194 is led3[5]~feeder at LCCOMB_X18_Y9_N30
+A1L194 = led2[5];
+
+
+--A1L180 is led2[5]~feeder at LCCOMB_X18_Y9_N12
+A1L180 = led1[5];
+
+
+--A1L196 is led3[6]~feeder at LCCOMB_X17_Y8_N6
+A1L196 = led2[6];
+
+
+--A1L218 is led5[6]~feeder at LCCOMB_X18_Y9_N18
+A1L218 = led4[6];
+
+

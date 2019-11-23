@@ -1,0 +1,938 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--cnt[3] is cnt[3]
+cnt[3] = DFFEAS(A1L101, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--cnt[2] is cnt[2]
+cnt[2] = DFFEAS(A1L102, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--cnt[1] is cnt[1]
+cnt[1] = DFFEAS(A1L103, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--cnt[0] is cnt[0]
+cnt[0] = DFFEAS(A1L97, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L1 is Decoder~240
+A1L1 = !cnt[3] & !cnt[2] & !cnt[1] & !cnt[0];
+
+
+--A1L2 is Decoder~241
+A1L2 = cnt[0] & !cnt[3] & !cnt[2] & !cnt[1];
+
+
+--A1L3 is Decoder~242
+A1L3 = cnt[1] & !cnt[3] & !cnt[2] & !cnt[0];
+
+
+--A1L4 is Decoder~243
+A1L4 = cnt[1] & cnt[0] & !cnt[3] & !cnt[2];
+
+
+--A1L5 is Decoder~244
+A1L5 = cnt[2] & !cnt[3] & !cnt[1] & !cnt[0];
+
+
+--A1L6 is Decoder~245
+A1L6 = cnt[2] & cnt[0] & !cnt[3] & !cnt[1];
+
+
+--A1L101 is cnt[3]~129
+A1L101 = cnt[3] $ (cnt[2] & cnt[1] & cnt[0]);
+
+
+--A1L102 is cnt~130
+A1L102 = cnt[1] & (cnt[2] $ cnt[0]) # !cnt[1] & cnt[2] & (cnt[3] # !cnt[0]);
+
+
+--A1L103 is cnt~131
+A1L103 = cnt[1] & (!cnt[0]) # !cnt[1] & cnt[0] & (cnt[3] # !cnt[2]);
+
+
+--led6[0] is led6[0]
+led6[0] = DFFEAS(led5[0], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L8 is Select~1418
+A1L8 = cnt[0] & (cnt[2] # cnt[1]);
+
+
+--led3[0] is led3[0]
+led3[0] = DFFEAS(led2[0], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L7 is Decoder~246
+A1L7 = cnt[0] & !cnt[1];
+
+
+--led2[0] is led2[0]
+led2[0] = DFFEAS(led1[0], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L9 is Select~1419
+A1L9 = A1L8 & (!A1L7) # !A1L8 & (A1L7 & (led2[0]) # !A1L7 & led3[0]);
+
+
+--led4[0] is led4[0]
+led4[0] = DFFEAS(led3[0], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L10 is Select~1420
+A1L10 = A1L8 & (A1L9 & (led4[0]) # !A1L9 & led6[0]) # !A1L8 & (A1L9);
+
+
+--led5[0] is led5[0]
+led5[0] = DFFEAS(led4[0], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[0] is led1[0]
+led1[0] = DFFEAS(temp[0], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L11 is Select~1421
+A1L11 = cnt[2] & led5[0] # !cnt[2] & (led1[0]);
+
+
+--A1L12 is Select~1422
+A1L12 = cnt[1] & A1L10 # !cnt[1] & (cnt[0] & A1L10 # !cnt[0] & (A1L11));
+
+
+--A1L210 is reduce_or~95
+A1L210 = cnt[3] # cnt[2] & cnt[1];
+
+
+--led3[1] is led3[1]
+led3[1] = DFFEAS(led2[1], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led6[1] is led6[1]
+led6[1] = DFFEAS(led5[1], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[1] is led2[1]
+led2[1] = DFFEAS(led1[1], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L13 is Select~1423
+A1L13 = A1L7 & (A1L8 & led6[1] # !A1L8 & (led2[1])) # !A1L7 & (A1L8);
+
+
+--led4[1] is led4[1]
+led4[1] = DFFEAS(led3[1], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L14 is Select~1424
+A1L14 = A1L7 & (A1L13) # !A1L7 & (A1L13 & (led4[1]) # !A1L13 & led3[1]);
+
+
+--led5[1] is led5[1]
+led5[1] = DFFEAS(led4[1], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[1] is led1[1]
+led1[1] = DFFEAS(temp[1], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L15 is Select~1425
+A1L15 = cnt[2] & led5[1] # !cnt[2] & (led1[1]);
+
+
+--A1L16 is Select~1426
+A1L16 = cnt[1] & A1L14 # !cnt[1] & (cnt[0] & A1L14 # !cnt[0] & (A1L15));
+
+
+--led6[2] is led6[2]
+led6[2] = DFFEAS(led5[2], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led3[2] is led3[2]
+led3[2] = DFFEAS(led2[2], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[2] is led2[2]
+led2[2] = DFFEAS(led1[2], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L17 is Select~1427
+A1L17 = A1L8 & (!A1L7) # !A1L8 & (A1L7 & (led2[2]) # !A1L7 & led3[2]);
+
+
+--led4[2] is led4[2]
+led4[2] = DFFEAS(led3[2], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L18 is Select~1428
+A1L18 = A1L8 & (A1L17 & (led4[2]) # !A1L17 & led6[2]) # !A1L8 & (A1L17);
+
+
+--led5[2] is led5[2]
+led5[2] = DFFEAS(led4[2], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[2] is led1[2]
+led1[2] = DFFEAS(temp[2], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L19 is Select~1429
+A1L19 = cnt[2] & led5[2] # !cnt[2] & (led1[2]);
+
+
+--A1L20 is Select~1430
+A1L20 = cnt[1] & A1L18 # !cnt[1] & (cnt[0] & A1L18 # !cnt[0] & (A1L19));
+
+
+--led3[3] is led3[3]
+led3[3] = DFFEAS(led2[3], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led6[3] is led6[3]
+led6[3] = DFFEAS(led5[3], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[3] is led2[3]
+led2[3] = DFFEAS(led1[3], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L21 is Select~1431
+A1L21 = A1L7 & (A1L8 & led6[3] # !A1L8 & (led2[3])) # !A1L7 & (A1L8);
+
+
+--led4[3] is led4[3]
+led4[3] = DFFEAS(led3[3], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L22 is Select~1432
+A1L22 = A1L7 & (A1L21) # !A1L7 & (A1L21 & (led4[3]) # !A1L21 & led3[3]);
+
+
+--led5[3] is led5[3]
+led5[3] = DFFEAS(led4[3], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[3] is led1[3]
+led1[3] = DFFEAS(temp[3], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L23 is Select~1433
+A1L23 = cnt[2] & led5[3] # !cnt[2] & (led1[3]);
+
+
+--A1L24 is Select~1434
+A1L24 = cnt[1] & A1L22 # !cnt[1] & (cnt[0] & A1L22 # !cnt[0] & (A1L23));
+
+
+--led6[4] is led6[4]
+led6[4] = DFFEAS(led5[4], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led3[4] is led3[4]
+led3[4] = DFFEAS(led2[4], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[4] is led2[4]
+led2[4] = DFFEAS(led1[4], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L25 is Select~1435
+A1L25 = A1L8 & (!A1L7) # !A1L8 & (A1L7 & (led2[4]) # !A1L7 & led3[4]);
+
+
+--led4[4] is led4[4]
+led4[4] = DFFEAS(led3[4], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L26 is Select~1436
+A1L26 = A1L8 & (A1L25 & (led4[4]) # !A1L25 & led6[4]) # !A1L8 & (A1L25);
+
+
+--led5[4] is led5[4]
+led5[4] = DFFEAS(led4[4], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[4] is led1[4]
+led1[4] = DFFEAS(temp[4], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L27 is Select~1437
+A1L27 = cnt[2] & led5[4] # !cnt[2] & (led1[4]);
+
+
+--A1L28 is Select~1438
+A1L28 = cnt[1] & A1L26 # !cnt[1] & (cnt[0] & A1L26 # !cnt[0] & (A1L27));
+
+
+--led3[5] is led3[5]
+led3[5] = DFFEAS(led2[5], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led6[5] is led6[5]
+led6[5] = DFFEAS(led5[5], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[5] is led2[5]
+led2[5] = DFFEAS(led1[5], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L29 is Select~1439
+A1L29 = A1L7 & (A1L8 & led6[5] # !A1L8 & (led2[5])) # !A1L7 & (A1L8);
+
+
+--led4[5] is led4[5]
+led4[5] = DFFEAS(led3[5], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L30 is Select~1440
+A1L30 = A1L7 & (A1L29) # !A1L7 & (A1L29 & (led4[5]) # !A1L29 & led3[5]);
+
+
+--led5[5] is led5[5]
+led5[5] = DFFEAS(led4[5], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[5] is led1[5]
+led1[5] = DFFEAS(temp[5], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L31 is Select~1441
+A1L31 = cnt[2] & led5[5] # !cnt[2] & (led1[5]);
+
+
+--A1L32 is Select~1442
+A1L32 = cnt[1] & A1L30 # !cnt[1] & (cnt[0] & A1L30 # !cnt[0] & (A1L31));
+
+
+--led6[6] is led6[6]
+led6[6] = DFFEAS(led5[6], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led3[6] is led3[6]
+led3[6] = DFFEAS(led2[6], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led2[6] is led2[6]
+led2[6] = DFFEAS(led1[6], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L33 is Select~1443
+A1L33 = A1L8 & (!A1L7) # !A1L8 & (A1L7 & (led2[6]) # !A1L7 & led3[6]);
+
+
+--led4[6] is led4[6]
+led4[6] = DFFEAS(led3[6], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L34 is Select~1444
+A1L34 = A1L8 & (A1L33 & (led4[6]) # !A1L33 & led6[6]) # !A1L8 & (A1L33);
+
+
+--led5[6] is led5[6]
+led5[6] = DFFEAS(led4[6], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--led1[6] is led1[6]
+led1[6] = DFFEAS(temp[6], clk1,  ,  , !flag,  ,  ,  ,  );
+
+
+--A1L35 is Select~1445
+A1L35 = cnt[2] & led5[6] # !cnt[2] & (led1[6]);
+
+
+--A1L36 is Select~1446
+A1L36 = cnt[1] & A1L34 # !cnt[1] & (cnt[0] & A1L34 # !cnt[0] & (A1L35));
+
+
+--clk1 is clk1
+clk1 = DFFEAS(A1L93, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--flag is flag
+flag = DFFEAS(A1L161, clk1,  ,  ,  , VCC,  ,  , !flag);
+
+
+--temp[0] is temp[0]
+temp[0] = DFFEAS(A1L211, clk1,  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[1] is temp[1]
+temp[1] = DFFEAS(A1L212, clk1,  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[2] is temp[2]
+temp[2] = DFFEAS(A1L213, clk1,  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[3] is temp[3]
+temp[3] = DFFEAS(A1L214, clk1,  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[4] is temp[4]
+temp[4] = DFFEAS(A1L215, clk1,  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[5] is temp[5]
+temp[5] = DFFEAS(A1L216, clk1,  ,  , A1L91,  ,  ,  ,  );
+
+
+--temp[6] is temp[6]
+temp[6] = DFFEAS(A1L217, clk1,  ,  , A1L91,  ,  ,  ,  );
+
+
+--count[25] is count[25]
+count[25] = DFFEAS(A1L87, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[24] is count[24]
+count[24] = DFFEAS(A1L85, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[23] is count[23]
+count[23] = DFFEAS(A1L83, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[22] is count[22]
+count[22] = DFFEAS(A1L81, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L218 is rtl~249
+A1L218 = !count[25] & !count[24] & !count[23] & !count[22];
+
+
+--count[21] is count[21]
+count[21] = DFFEAS(A1L79, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[20] is count[20]
+count[20] = DFFEAS(A1L77, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[19] is count[19]
+count[19] = DFFEAS(A1L75, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[18] is count[18]
+count[18] = DFFEAS(A1L73, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L219 is rtl~250
+A1L219 = !count[21] & !count[20] & !count[19] & !count[18];
+
+
+--count[17] is count[17]
+count[17] = DFFEAS(A1L71, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[16] is count[16]
+count[16] = DFFEAS(A1L69, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[15] is count[15]
+count[15] = DFFEAS(A1L67, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[14] is count[14]
+count[14] = DFFEAS(A1L65, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L220 is rtl~251
+A1L220 = !count[17] & !count[16] & !count[15] & !count[14];
+
+
+--count[13] is count[13]
+count[13] = DFFEAS(A1L131, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[12] is count[12]
+count[12] = DFFEAS(A1L132, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[11] is count[11]
+count[11] = DFFEAS(A1L133, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[10] is count[10]
+count[10] = DFFEAS(A1L57, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L221 is rtl~252
+A1L221 = count[13] & count[12] & count[11] & !count[10];
+
+
+--A1L222 is rtl~253
+A1L222 = A1L218 & A1L219 & A1L220 & A1L221;
+
+
+--count[9] is count[9]
+count[9] = DFFEAS(A1L134, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[7] is count[7]
+count[7] = DFFEAS(A1L135, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[8] is count[8]
+count[8] = DFFEAS(A1L53, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[6] is count[6]
+count[6] = DFFEAS(A1L49, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L223 is rtl~254
+A1L223 = count[9] & count[7] & !count[8] & !count[6];
+
+
+--count[4] is count[4]
+count[4] = DFFEAS(A1L136, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[3] is count[3]
+count[3] = DFFEAS(A1L137, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[5] is count[5]
+count[5] = DFFEAS(A1L47, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[2] is count[2]
+count[2] = DFFEAS(A1L41, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L224 is rtl~255
+A1L224 = count[4] & count[3] & !count[5] & !count[2];
+
+
+--count[1] is count[1]
+count[1] = DFFEAS(A1L39, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--count[0] is count[0]
+count[0] = DFFEAS(A1L138, clk100khz,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L225 is rtl~256
+A1L225 = A1L223 & A1L224 & !count[1] & !count[0];
+
+
+--A1L93 is clk1~5
+A1L93 = clk1 $ (A1L222 & A1L225);
+
+
+--A1L226 is rtl~257
+A1L226 = din[3] & din[1] & din[2] & din[0];
+
+
+--A1L89 is always1~77
+A1L89 = !led6[0] & !led6[1] & !led6[2] & !led6[3];
+
+
+--A1L90 is always1~78
+A1L90 = A1L89 & !led6[4] & !led6[5] & !led6[6];
+
+
+--A1L161 is flag~59
+A1L161 = A1L226 # flag & !A1L90;
+
+
+--A1L211 is reduce_or~96
+A1L211 = din[1] & (din[2] & !din[0] & !din[3] # !din[2] & (din[3])) # !din[1] & din[3] & (din[0] # din[2]);
+
+
+--A1L91 is always1~79
+A1L91 = A1L90 & !A1L226;
+
+
+--A1L212 is reduce_or~97
+A1L212 = din[0] & (din[3] $ (din[1] & din[2])) # !din[0] & din[1] & din[2];
+
+
+--A1L213 is reduce_or~98
+A1L213 = din[2] & (din[3] & !din[0] # !din[3] & (din[1])) # !din[2] & din[3] & (din[0] # din[1]);
+
+
+--A1L214 is reduce_or~99
+A1L214 = din[3] & (din[1] & (!din[2]) # !din[1] & (din[0] # din[2]));
+
+
+--A1L215 is reduce_or~100
+A1L215 = din[3] & (din[0] & !din[1] # !din[0] & din[1] & !din[2]);
+
+
+--A1L216 is reduce_or~101
+A1L216 = din[0] & (din[1] & din[2] & !din[3] # !din[1] & !din[2] & din[3]) # !din[0] & din[3] & (din[1] $ din[2]);
+
+
+--A1L217 is reduce_or~102
+A1L217 = din[0] & (din[3] $ (din[1] & din[2])) # !din[0] & din[3] & (din[1] $ din[2]);
+
+
+--A1L37 is add~485
+A1L37 = count[0] $ VCC;
+
+--A1L38 is add~486
+A1L38 = CARRY(count[0]);
+
+
+--A1L39 is add~487
+A1L39 = count[1] & !A1L38 # !count[1] & (A1L38 # GND);
+
+--A1L40 is add~488
+A1L40 = CARRY(!A1L38 # !count[1]);
+
+
+--A1L41 is add~489
+A1L41 = count[2] & (A1L40 $ GND) # !count[2] & !A1L40 & VCC;
+
+--A1L42 is add~490
+A1L42 = CARRY(count[2] & !A1L40);
+
+
+--A1L43 is add~491
+A1L43 = count[3] & !A1L42 # !count[3] & (A1L42 # GND);
+
+--A1L44 is add~492
+A1L44 = CARRY(!A1L42 # !count[3]);
+
+
+--A1L45 is add~493
+A1L45 = count[4] & (A1L44 $ GND) # !count[4] & !A1L44 & VCC;
+
+--A1L46 is add~494
+A1L46 = CARRY(count[4] & !A1L44);
+
+
+--A1L47 is add~495
+A1L47 = count[5] & !A1L46 # !count[5] & (A1L46 # GND);
+
+--A1L48 is add~496
+A1L48 = CARRY(!A1L46 # !count[5]);
+
+
+--A1L49 is add~497
+A1L49 = count[6] & (A1L48 $ GND) # !count[6] & !A1L48 & VCC;
+
+--A1L50 is add~498
+A1L50 = CARRY(count[6] & !A1L48);
+
+
+--A1L51 is add~499
+A1L51 = count[7] & !A1L50 # !count[7] & (A1L50 # GND);
+
+--A1L52 is add~500
+A1L52 = CARRY(!A1L50 # !count[7]);
+
+
+--A1L53 is add~501
+A1L53 = count[8] & (A1L52 $ GND) # !count[8] & !A1L52 & VCC;
+
+--A1L54 is add~502
+A1L54 = CARRY(count[8] & !A1L52);
+
+
+--A1L55 is add~503
+A1L55 = count[9] & !A1L54 # !count[9] & (A1L54 # GND);
+
+--A1L56 is add~504
+A1L56 = CARRY(!A1L54 # !count[9]);
+
+
+--A1L57 is add~505
+A1L57 = count[10] & (A1L56 $ GND) # !count[10] & !A1L56 & VCC;
+
+--A1L58 is add~506
+A1L58 = CARRY(count[10] & !A1L56);
+
+
+--A1L59 is add~507
+A1L59 = count[11] & !A1L58 # !count[11] & (A1L58 # GND);
+
+--A1L60 is add~508
+A1L60 = CARRY(!A1L58 # !count[11]);
+
+
+--A1L61 is add~509
+A1L61 = count[12] & (A1L60 $ GND) # !count[12] & !A1L60 & VCC;
+
+--A1L62 is add~510
+A1L62 = CARRY(count[12] & !A1L60);
+
+
+--A1L63 is add~511
+A1L63 = count[13] & !A1L62 # !count[13] & (A1L62 # GND);
+
+--A1L64 is add~512
+A1L64 = CARRY(!A1L62 # !count[13]);
+
+
+--A1L65 is add~513
+A1L65 = count[14] & (A1L64 $ GND) # !count[14] & !A1L64 & VCC;
+
+--A1L66 is add~514
+A1L66 = CARRY(count[14] & !A1L64);
+
+
+--A1L67 is add~515
+A1L67 = count[15] & !A1L66 # !count[15] & (A1L66 # GND);
+
+--A1L68 is add~516
+A1L68 = CARRY(!A1L66 # !count[15]);
+
+
+--A1L69 is add~517
+A1L69 = count[16] & (A1L68 $ GND) # !count[16] & !A1L68 & VCC;
+
+--A1L70 is add~518
+A1L70 = CARRY(count[16] & !A1L68);
+
+
+--A1L71 is add~519
+A1L71 = count[17] & !A1L70 # !count[17] & (A1L70 # GND);
+
+--A1L72 is add~520
+A1L72 = CARRY(!A1L70 # !count[17]);
+
+
+--A1L73 is add~521
+A1L73 = count[18] & (A1L72 $ GND) # !count[18] & !A1L72 & VCC;
+
+--A1L74 is add~522
+A1L74 = CARRY(count[18] & !A1L72);
+
+
+--A1L75 is add~523
+A1L75 = count[19] & !A1L74 # !count[19] & (A1L74 # GND);
+
+--A1L76 is add~524
+A1L76 = CARRY(!A1L74 # !count[19]);
+
+
+--A1L77 is add~525
+A1L77 = count[20] & (A1L76 $ GND) # !count[20] & !A1L76 & VCC;
+
+--A1L78 is add~526
+A1L78 = CARRY(count[20] & !A1L76);
+
+
+--A1L79 is add~527
+A1L79 = count[21] & !A1L78 # !count[21] & (A1L78 # GND);
+
+--A1L80 is add~528
+A1L80 = CARRY(!A1L78 # !count[21]);
+
+
+--A1L81 is add~529
+A1L81 = count[22] & (A1L80 $ GND) # !count[22] & !A1L80 & VCC;
+
+--A1L82 is add~530
+A1L82 = CARRY(count[22] & !A1L80);
+
+
+--A1L83 is add~531
+A1L83 = count[23] & !A1L82 # !count[23] & (A1L82 # GND);
+
+--A1L84 is add~532
+A1L84 = CARRY(!A1L82 # !count[23]);
+
+
+--A1L85 is add~533
+A1L85 = count[24] & (A1L84 $ GND) # !count[24] & !A1L84 & VCC;
+
+--A1L86 is add~534
+A1L86 = CARRY(count[24] & !A1L84);
+
+
+--A1L87 is add~535
+A1L87 = count[25] $ A1L86;
+
+
+--A1L131 is count~196
+A1L131 = A1L63 & (!A1L225 # !A1L222);
+
+
+--A1L132 is count~197
+A1L132 = A1L61 & (!A1L225 # !A1L222);
+
+
+--A1L133 is count~198
+A1L133 = A1L59 & (!A1L225 # !A1L222);
+
+
+--A1L134 is count~199
+A1L134 = A1L55 & (!A1L225 # !A1L222);
+
+
+--A1L135 is count~200
+A1L135 = A1L51 & (!A1L225 # !A1L222);
+
+
+--A1L136 is count~201
+A1L136 = A1L45 & (!A1L225 # !A1L222);
+
+
+--A1L137 is count~202
+A1L137 = A1L43 & (!A1L225 # !A1L222);
+
+
+--A1L138 is count~203
+A1L138 = A1L37 & (!A1L225 # !A1L222);
+
+
+--A1L97 is cnt[0]~132
+A1L97 = !cnt[0];
+
+
+--dout[0]$latch is dout[0]$latch
+dout[0]$latch = A1L210 & (dout[0]$latch) # !A1L210 & A1L12;
+
+
+--dout[1]$latch is dout[1]$latch
+dout[1]$latch = A1L210 & (dout[1]$latch) # !A1L210 & A1L16;
+
+
+--dout[2]$latch is dout[2]$latch
+dout[2]$latch = A1L210 & (dout[2]$latch) # !A1L210 & A1L20;
+
+
+--dout[3]$latch is dout[3]$latch
+dout[3]$latch = A1L210 & (dout[3]$latch) # !A1L210 & A1L24;
+
+
+--dout[4]$latch is dout[4]$latch
+dout[4]$latch = A1L210 & (dout[4]$latch) # !A1L210 & A1L28;
+
+
+--dout[5]$latch is dout[5]$latch
+dout[5]$latch = A1L210 & (dout[5]$latch) # !A1L210 & A1L32;
+
+
+--dout[6]$latch is dout[6]$latch
+dout[6]$latch = A1L210 & (dout[6]$latch) # !A1L210 & A1L36;
+
+
+--clk100khz is clk100khz
+--operation mode is input
+
+clk100khz = INPUT();
+
+
+--din[3] is din[3]
+--operation mode is input
+
+din[3] = INPUT();
+
+
+--din[1] is din[1]
+--operation mode is input
+
+din[1] = INPUT();
+
+
+--din[2] is din[2]
+--operation mode is input
+
+din[2] = INPUT();
+
+
+--din[0] is din[0]
+--operation mode is input
+
+din[0] = INPUT();
+
+
+--scan[0] is scan[0]
+--operation mode is output
+
+scan[0] = OUTPUT(A1L1);
+
+
+--scan[1] is scan[1]
+--operation mode is output
+
+scan[1] = OUTPUT(A1L2);
+
+
+--scan[2] is scan[2]
+--operation mode is output
+
+scan[2] = OUTPUT(A1L3);
+
+
+--scan[3] is scan[3]
+--operation mode is output
+
+scan[3] = OUTPUT(A1L4);
+
+
+--scan[4] is scan[4]
+--operation mode is output
+
+scan[4] = OUTPUT(A1L5);
+
+
+--scan[5] is scan[5]
+--operation mode is output
+
+scan[5] = OUTPUT(A1L6);
+
+
+--dout[0] is dout[0]
+--operation mode is output
+
+dout[0] = OUTPUT(dout[0]$latch);
+
+
+--dout[1] is dout[1]
+--operation mode is output
+
+dout[1] = OUTPUT(dout[1]$latch);
+
+
+--dout[2] is dout[2]
+--operation mode is output
+
+dout[2] = OUTPUT(dout[2]$latch);
+
+
+--dout[3] is dout[3]
+--operation mode is output
+
+dout[3] = OUTPUT(dout[3]$latch);
+
+
+--dout[4] is dout[4]
+--operation mode is output
+
+dout[4] = OUTPUT(dout[4]$latch);
+
+
+--dout[5] is dout[5]
+--operation mode is output
+
+dout[5] = OUTPUT(dout[5]$latch);
+
+
+--dout[6] is dout[6]
+--operation mode is output
+
+dout[6] = OUTPUT(dout[6]$latch);
+
+
+--dout[7] is dout[7]
+--operation mode is output
+
+dout[7] = OUTPUT(GND);
+
+

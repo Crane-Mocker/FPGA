@@ -1,0 +1,261 @@
+Analysis & Synthesis report for jp
+Sat Nov 23 16:00:08 2019
+Version 5.1 Build 176 10/26/2005 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. User-Specified and Inferred Latches
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Analysis & Synthesis Equations
+ 11. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2005 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Nov 23 16:00:08 2019    ;
+; Quartus II Version                 ; 5.1 Build 176 10/26/2005 SJ Full Version ;
+; Revision Name                      ; jp                                       ;
+; Top-level Entity Name              ; jp                                       ;
+; Family                             ; Cyclone II                               ;
+; Total combinational functions      ; 103                                      ;
+; Total registers                    ; 81                                       ;
+; Total pins                         ; 19                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 0                                        ;
++------------------------------------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                             ; Setting            ; Default Value      ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                             ; EP2C5T144C8        ;                    ;
+; Top-level entity name                                              ; jp                 ; jp                 ;
+; Family name                                                        ; Cyclone II         ; Stratix            ;
+; Use smart compilation                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                           ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                ; Off                ; Off                ;
+; Preserve fewer node names                                          ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                          ; Off                ; Off                ;
+; Verilog Version                                                    ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                       ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                           ; Auto               ; Auto               ;
+; Extract Verilog State Machines                                     ; On                 ; On                 ;
+; Extract VHDL State Machines                                        ; On                 ; On                 ;
+; Add Pass-Through Logic to Inferred RAMs                            ; On                 ; On                 ;
+; DSP Block Balancing                                                ; Auto               ; Auto               ;
+; Maximum DSP Block Usage                                            ; -1                 ; -1                 ;
+; NOT Gate Push-Back                                                 ; On                 ; On                 ;
+; Power-Up Don't Care                                                ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                       ; Off                ; Off                ;
+; Remove Duplicate Registers                                         ; On                 ; On                 ;
+; Ignore CARRY Buffers                                               ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                             ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                              ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                          ; Off                ; Off                ;
+; Ignore LCELL Buffers                                               ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                     ; Off                ; Off                ;
+; Optimization Technique -- Cyclone II                               ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II ; 70                 ; 70                 ;
+; Auto Carry Chains                                                  ; On                 ; On                 ;
+; Auto Open-Drain Pins                                               ; On                 ; On                 ;
+; Remove Duplicate Logic                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                              ; Off                ; Off                ;
+; Perform gate-level register retiming                               ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax             ; On                 ; On                 ;
+; Auto ROM Replacement                                               ; On                 ; On                 ;
+; Auto RAM Replacement                                               ; On                 ; On                 ;
+; Auto Shift Register Replacement                                    ; On                 ; On                 ;
+; Auto Clock Enable Replacement                                      ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                  ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                             ; Off                ; Off                ;
+; Auto Resource Sharing                                              ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                      ; Off                ; Off                ;
+; Maximum Number of M4K Memory Blocks                                ; -1                 ; -1                 ;
+; Ignore translate_off and translate_on Synthesis Directives         ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                 ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                   ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                       ; Normal compilation ; Normal compilation ;
+; HDL message level                                                  ; Level2             ; Level2             ;
++--------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                     ;
++----------------------------------+-----------------+------------------------+------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path ;
++----------------------------------+-----------------+------------------------+------------------------------+
+; jp.v                             ; yes             ; User Verilog HDL File  ; E:/jp/jp.v                   ;
++----------------------------------+-----------------+------------------------+------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total combinational functions               ; 103   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 48    ;
+;     -- 3 input functions                    ; 26    ;
+;     -- <=2 input functions                  ; 29    ;
+;         -- Combinational cells for routing  ; 0     ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 78    ;
+;     -- arithmetic mode                      ; 25    ;
+; Total registers                             ; 81    ;
+; I/O pins                                    ; 19    ;
+; Maximum fan-out node                        ; clk1  ;
+; Maximum fan-out                             ; 51    ;
+; Total fan-out                               ; 551   ;
+; Average fan-out                             ; 2.71  ;
++---------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                          ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+
+; |jp                        ; 103 (103)         ; 81 (81)      ; 0           ; 0            ; 0       ; 0         ; 19   ; 0            ; |jp                 ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------+
+; User-Specified and Inferred Latches               ;
++-----------------------------------------------+---+
+; Latch Name                                    ;   ;
++-----------------------------------------------+---+
+; dout[0]$latch                                 ;   ;
+; dout[1]$latch                                 ;   ;
+; dout[2]$latch                                 ;   ;
+; dout[3]$latch                                 ;   ;
+; dout[4]$latch                                 ;   ;
+; dout[5]$latch                                 ;   ;
+; dout[6]$latch                                 ;   ;
+; Number of user-specified and inferred latches ; 7 ;
++-----------------------------------------------+---+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 81    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 49    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 6:1                ; 7 bits    ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |jp|Select~1               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++--------------------------------+
+; Analysis & Synthesis Equations ;
++--------------------------------+
+The equations can be found in E:/jp/jp.map.eqn.
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 5.1 Build 176 10/26/2005 SJ Full Version
+    Info: Processing started: Sat Nov 23 16:00:07 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off jp -c jp
+Warning (10268): Verilog HDL information at jp.v(13): Always Construct contains both blocking and non-blocking assignments
+Info: Found 1 design units, including 1 entities, in source file jp.v
+    Info: Found entity 1: jp
+Info: Elaborating entity "jp" for the top level hierarchy
+Info (10035): Verilog HDL or VHDL information at jp.v(8): object "s" declared but not used
+Warning (10230): Verilog HDL assignment warning at jp.v(48): truncated value with size 32 to match size of target (4)
+Warning (10235): Verilog HDL Always Construct warning at jp.v(54): variable "led1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at jp.v(55): variable "led2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at jp.v(56): variable "led3" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at jp.v(57): variable "led4" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at jp.v(58): variable "led5" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at jp.v(59): variable "led6" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at jp.v(51): variable "dout" may not be assigned a new value in every possible path through the Always Construct.  Variable "dout" holds its previous value in every path with no new value assignment, which may create a combinational loop in the current design.
+Warning: Reduced register "temp[7]" with stuck data_in port to stuck value GND
+Warning: Reduced register "led1[7]" with stuck data_in port to stuck value GND
+Warning: Reduced register "led2[7]" with stuck data_in port to stuck value GND
+Warning: Reduced register "led3[7]" with stuck data_in port to stuck value GND
+Warning: Reduced register "led4[7]" with stuck data_in port to stuck value GND
+Warning: Reduced register "led5[7]" with stuck data_in port to stuck value GND
+Warning: Reduced register "led6[7]" with stuck data_in port to stuck value GND
+Warning: Latch dout[0]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cnt[2]
+Warning: Latch dout[1]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cnt[2]
+Warning: Latch dout[2]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cnt[2]
+Warning: Latch dout[3]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cnt[2]
+Warning: Latch dout[4]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cnt[2]
+Warning: Latch dout[5]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cnt[2]
+Warning: Latch dout[6]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cnt[2]
+Warning: Output pins are stuck at VCC or GND
+    Warning: Pin "dout[7]" stuck at GND
+Info: Implemented 164 device resources after synthesis - the final resource count might be different
+    Info: Implemented 5 input pins
+    Info: Implemented 14 output pins
+    Info: Implemented 145 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 32 warnings
+    Info: Processing ended: Sat Nov 23 16:00:08 2019
+    Info: Elapsed time: 00:00:01
+
+
