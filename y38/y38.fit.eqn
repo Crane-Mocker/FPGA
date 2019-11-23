@@ -1,0 +1,144 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--A1L16 is y~263 at LCCOMB_X2_Y1_N0
+A1L16 = s3 # s2 # !s1;
+
+
+--A1L17 is y~264 at LCCOMB_X2_Y1_N18
+A1L17 = a0 # a1 # a2 # A1L16;
+
+
+--A1L18 is y~265 at LCCOMB_X2_Y1_N2
+A1L18 = a1 # a2 # A1L16 # !a0;
+
+
+--A1L19 is y~266 at LCCOMB_X2_Y1_N22
+A1L19 = a0 # a2 # A1L16 # !a1;
+
+
+--A1L20 is y~267 at LCCOMB_X2_Y1_N4
+A1L20 = a2 # A1L16 # !a1 # !a0;
+
+
+--A1L21 is y~268 at LCCOMB_X2_Y1_N24
+A1L21 = a0 # a1 # A1L16 # !a2;
+
+
+--A1L22 is y~269 at LCCOMB_X2_Y1_N10
+A1L22 = a1 # A1L16 # !a2 # !a0;
+
+
+--A1L23 is y~270 at LCCOMB_X2_Y1_N6
+A1L23 = a1 & !a0 & !A1L16;
+
+
+--A1L24 is y~271 at LCCOMB_X2_Y1_N16
+A1L24 = A1L23 & (a2 # s1 & A1L16) # !A1L23 & s1 & (A1L16);
+
+
+--A1L25 is y~272 at LCCOMB_X2_Y1_N12
+A1L25 = a1 & a0 & !A1L16;
+
+
+--A1L26 is y~273 at LCCOMB_X2_Y1_N20
+A1L26 = A1L25 & (a2 # s1 & A1L16) # !A1L25 & s1 & (A1L16);
+
+
+--s3 is s3 at PIN_28
+--operation mode is input
+
+s3 = INPUT();
+
+
+--s2 is s2 at PIN_30
+--operation mode is input
+
+s2 = INPUT();
+
+
+--s1 is s1 at PIN_31
+--operation mode is input
+
+s1 = INPUT();
+
+
+--a0 is a0 at PIN_26
+--operation mode is input
+
+a0 = INPUT();
+
+
+--a1 is a1 at PIN_25
+--operation mode is input
+
+a1 = INPUT();
+
+
+--a2 is a2 at PIN_24
+--operation mode is input
+
+a2 = INPUT();
+
+
+--y[0] is y[0] at PIN_48
+--operation mode is output
+
+y[0] = OUTPUT(A1L17);
+
+
+--y[1] is y[1] at PIN_47
+--operation mode is output
+
+y[1] = OUTPUT(A1L18);
+
+
+--y[2] is y[2] at PIN_45
+--operation mode is output
+
+y[2] = OUTPUT(A1L19);
+
+
+--y[3] is y[3] at PIN_44
+--operation mode is output
+
+y[3] = OUTPUT(A1L20);
+
+
+--y[4] is y[4] at PIN_43
+--operation mode is output
+
+y[4] = OUTPUT(A1L21);
+
+
+--y[5] is y[5] at PIN_42
+--operation mode is output
+
+y[5] = OUTPUT(A1L22);
+
+
+--y[6] is y[6] at PIN_41
+--operation mode is output
+
+y[6] = OUTPUT(!A1L24);
+
+
+--y[7] is y[7] at PIN_40
+--operation mode is output
+
+y[7] = OUTPUT(!A1L26);
+
+
+
+
+
