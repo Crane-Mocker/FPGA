@@ -1,0 +1,8 @@
+
+State Machine - |lig|flag
+Name flag.000 flag.010 flag.011 flag.001 flag.100 
+flag.001 0 0 0 0 0 
+flag.011 0 0 1 1 0 
+flag.010 0 1 0 1 0 
+flag.100 0 0 0 1 1 
+flag.000 1 0 0 1 0 

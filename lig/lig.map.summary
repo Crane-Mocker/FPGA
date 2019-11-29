@@ -1,0 +1,12 @@
+Analysis & Synthesis Status : Successful - Wed Nov 27 19:08:28 2019
+Quartus II Version : 5.1 Build 176 10/26/2005 SJ Full Version
+Revision Name : lig
+Top-level Entity Name : lig
+Family : Cyclone II
+Total combinational functions : 75
+Total registers : 44
+Total pins : 9
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
