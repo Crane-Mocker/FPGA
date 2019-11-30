@@ -1,0 +1,43 @@
+|cnt16
+clk100khz => cnt[1].CLK
+clk100khz => cnt[0].CLK
+clk100khz => cnt[2].CLK
+clk1hz => f1~1.IN1
+clk10hz => c.CLK
+rst => data1~16.OUTPUTSELECT
+rst => data1~17.OUTPUTSELECT
+rst => data1~18.OUTPUTSELECT
+rst => data1~19.OUTPUTSELECT
+rst => f2~3.OUTPUTSELECT
+rst => data2~12.OUTPUTSELECT
+rst => data2~13.OUTPUTSELECT
+rst => data2~14.OUTPUTSELECT
+rst => data2~15.OUTPUTSELECT
+en => f1~0.IN1
+en => f1~1.IN0
+din => c.DATAIN
+op => data1~12.OUTPUTSELECT
+op => data1~13.OUTPUTSELECT
+op => data1~14.OUTPUTSELECT
+op => data1~15.OUTPUTSELECT
+op => f2~2.OUTPUTSELECT
+op => data2~8.OUTPUTSELECT
+op => data2~9.OUTPUTSELECT
+op => data2~10.OUTPUTSELECT
+op => data2~11.OUTPUTSELECT
+scan[0] <= <GND>
+scan[1] <= <GND>
+scan[2] <= Decoder~0.DB_MAX_OUTPUT_PORT_TYPE
+scan[3] <= Decoder~0.DB_MAX_OUTPUT_PORT_TYPE
+scan[4] <= <GND>
+scan[5] <= <GND>
+dout[0] <= reduce_or~7.DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= reduce_or~6.DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= reduce_or~5.DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= reduce_or~4.DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= reduce_or~3.DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= reduce_or~2.DB_MAX_OUTPUT_PORT_TYPE
+dout[6] <= reduce_or~1.DB_MAX_OUTPUT_PORT_TYPE
+dout[7] <= <GND>
+
+
